@@ -31,7 +31,7 @@ export function CVResume() {
         'PowerPoint - Professionelle Präsentationen',
         'Word - Dokumentenerstellung und -bearbeitung',
       ],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Microsoft_Office_logo_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_logo_%282019%E2%80%93present%29.svg.png',
+      image: 'icons/microsoft.svg',
     },
     'SQL Editor': {
       title: 'SQL Server Management',
