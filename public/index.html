@@ -16,11 +16,15 @@
       /* SkillsSection custom classes */
       .skill-pill { transform: translateY(0) scale(1); background-color: #1e40af; box-shadow: 0 2px 4px rgba(30, 64, 175, 0.3); transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease; }
       .skill-pill--hover { transform: translateY(-3px) scale(1.05); background-color: #1d4ed8; box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4); }
+      /* Contact link hover classes for CVHeader */
+      .contact-link { display: inline-block; transition: transform .2s ease; transform: scale(1); }
+      .contact-link--hover { transform: scale(1.05); }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <main class="page-shell">
+      <div id="header-root"></div>
       <section class="welcome-card">
         <h1 class="app-title">CV App</h1>
         <span class="status">Running</span>
@@ -53,6 +57,50 @@
         } else if (window.ReactDOM) {
           // @ts-ignore
           window.ReactDOM.render(<AboutSection summary={summary} />, mountNode);
+        }
+      }
+
+      type PersonalInfo = { fullName: string; jobTitle: string; email: string; phone: string; location: string; profileImage: string };
+      type CVHeaderProps = { personalInfo: PersonalInfo };
+
+      function CVHeader({ personalInfo }: CVHeaderProps) {
+        const [hoveredElement, setHoveredElement] = React.useState<string | null>(null);
+        return (
+          <header className="px-0 py-12 text-center bg-blue-800 shadow-[0_4px_6px_rgba(0,0,0,0.1)] text-[white]">
+            <div className="px-4 py-0 mx-auto my-0 max-w-[1200px]">
+              <div className="flex gap-8 justify-center items-center mb-4 max-sm:flex-col max-sm:gap-4">
+                <img alt="Profilbild" className="object-cover rounded-full border-4 border-solid border-white border-opacity-30 h-[150px] shadow-[0_8px_20px_rgba(0,0,0,0.2)] w-[150px] max-sm:h-[120px] max-sm:w-[120px]" src={personalInfo.profileImage} />
+                <div className="text-left max-sm:text-center">
+                  <h1 className="mx-0 mt-0 mb-2 text-5xl font-[bold] max-sm:text-4xl">{personalInfo.fullName}</h1>
+                  <p className="m-0 text-2xl opacity-90 max-sm:text-xl">{personalInfo.jobTitle}</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-8 justify-center text-lg opacity-80">
+                <span className={`contact-link ${hoveredElement === 'email' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('email')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.email}</span>
+                <span className={`contact-link ${hoveredElement === 'phone' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('phone')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.phone}</span>
+                <span className={`contact-link ${hoveredElement === 'location' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('location')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.location}</span>
+              </div>
+            </div>
+          </header>
+        );
+      }
+
+      const headerMount = document.getElementById('header-root');
+      if (headerMount) {
+        const personalInfo: PersonalInfo = {
+          fullName: 'Yahyav Toumac',
+          jobTitle: 'Frontend-Entwickler',
+          email: 'yahyav.toumac@example.com',
+          phone: '+49 151 23456789',
+          location: 'Berlin, Deutschland',
+          profileImage: 'images/avatar.svg'
+        };
+        if (window.ReactDOM && 'createRoot' in window.ReactDOM) {
+          // @ts-ignore
+          window.ReactDOM.createRoot(headerMount).render(<CVHeader personalInfo={personalInfo} />);
+        } else if (window.ReactDOM) {
+          // @ts-ignore
+          window.ReactDOM.render(<CVHeader personalInfo={personalInfo} />, headerMount);
         }
       }
 
