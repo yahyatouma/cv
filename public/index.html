@@ -14,6 +14,7 @@
       .hint { margin: 12px 0 0; color: #555; font-size: 14px; }
       @media (max-width: 640px) { .welcome-card { margin: 0 16px; padding: 20px; } .app-title { font-size: 24px; } }
     </style>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <main class="page-shell">
@@ -21,7 +22,35 @@
         <h1 class="app-title">CV App</h1>
         <span class="status">Running</span>
         <p class="hint">The server is up. Edit public/index.html to get started.</p>
+        <div id="about-root"></div>
       </section>
     </main>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" data-presets="typescript,react">
+      const React = window.React;
+      type AboutSectionProps = { summary: string };
+      function AboutSection({ summary }: AboutSectionProps) {
+        if (!summary) return null;
+        return (
+          <section className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-semibold text-blue-800">Über mich</h2>
+            <p className="mx-auto my-0 text-lg leading-relaxed text-gray-700 max-w-[600px]">{summary}</p>
+          </section>
+        );
+      }
+      const mountNode = document.getElementById('about-root');
+      if (mountNode) {
+        const summary = 'Ich bin ein Full‑Stack‑Entwickler mit Schwerpunkt Frontend, der zugängliche und performante Interfaces baut.';
+        if (window.ReactDOM && 'createRoot' in window.ReactDOM) {
+          // @ts-ignore
+          window.ReactDOM.createRoot(mountNode).render(<AboutSection summary={summary} />);
+        } else if (window.ReactDOM) {
+          // @ts-ignore
+          window.ReactDOM.render(<AboutSection summary={summary} />, mountNode);
+        }
+      }
+    </script>
   </body>
 </html>
