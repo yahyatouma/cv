@@ -1,0 +1,6 @@
+.skill-pill { transform: translateY(0) scale(1); background-color: #1e40af; box-shadow: 0 2px 4px rgba(30,64,175,0.3); transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease; }
+.skill-pill--hover { transform: translateY(-3px) scale(1.05); background-color: #1d4ed8; box-shadow: 0 8px 20px rgba(30,64,175,0.4); }
+.contact-link { display: inline-block; transition: transform .2s ease; transform: scale(1); }
+.contact-link--hover { transform: scale(1.05); }
+.edu-card { transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease; background-color: #f8fafc; }
+.edu-card--hover { transform: translateX(10px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); background-color: #f1f5f9; }
