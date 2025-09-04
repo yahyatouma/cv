@@ -4,3 +4,5 @@
 .contact-link--hover { transform: scale(1.05); }
 .edu-card { transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease; background-color: #f8fafc; }
 .edu-card--hover { transform: translateX(10px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); background-color: #f1f5f9; }
+.exp-card { transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease; background-color: #f8fafc; }
+.exp-card--hover { transform: translateX(10px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); background-color: #f1f5f9; }
