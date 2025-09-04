@@ -70,8 +70,8 @@
               {skills.map((skill, index) => (
                 <div className="inline-block relative" key={skill}>
                   <span
-                    className={`inline-block px-6 py-3 text-base font-medium rounded-3xl transition-all cursor-pointer duration-[0.3s] ease-[ease] text-[white] ${hoveredElement === `+"`"+`skill-${index}`+"`"+` ? 'skill-pill skill-pill--hover' : 'skill-pill'}`}
-                    onMouseEnter={() => { setHoveredElement(`+"`"+`skill-${index}`+"`"+`); setHoveredSkill(skill); }}
+                    className={`inline-block px-6 py-3 text-base font-medium rounded-3xl transition-all cursor-pointer duration-[0.3s] ease-[ease] text-[white] ${hoveredElement === `skill-${index}` ? 'skill-pill skill-pill--hover' : 'skill-pill'}`}
+                    onMouseEnter={() => { setHoveredElement(`skill-${index}`); setHoveredSkill(skill); }}
                     onMouseLeave={() => { setHoveredElement(null); setHoveredSkill(null); }}
                   >
                     {skill}
