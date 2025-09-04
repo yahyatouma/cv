@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV App</title>
+    <style>
+      :root { --primary: #1e90ff; --text: #111; --bg: #fff; }
+      html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+      .page-shell { display: grid; place-items: center; height: 100%; }
+      .welcome-card { border-radius: 12px; border: 1px solid #e5e7eb; padding: 24px; max-width: 640px; box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+      .app-title { margin: 0 0 8px; font-size: 28px; }
+      .status { display: inline-block; background: var(--primary); color: #fff; border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 600; letter-spacing: .3px; }
+      .hint { margin: 12px 0 0; color: #555; font-size: 14px; }
+      @media (max-width: 640px) { .welcome-card { margin: 0 16px; padding: 20px; } .app-title { font-size: 24px; } }
+    </style>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="welcome-card">
+        <h1 class="app-title">CV App</h1>
+        <span class="status">Running</span>
+        <p class="hint">The server is up. Edit public/index.html to get started.</p>
+      </section>
+    </main>
+  </body>
+</html>
