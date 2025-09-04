@@ -31,6 +31,7 @@
         <p class="hint">The server is up. Edit public/index.html to get started.</p>
         <div id="about-root"></div>
         <div id="skills-root"></div>
+        <div id="resume-root"></div>
       </section>
     </main>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -174,6 +175,194 @@
         } else if (window.ReactDOM) {
           // @ts-ignore
           window.ReactDOM.render(<SkillsSection skills={skills} skillDetails={skillDetails} />, skillsMount);
+        }
+      }
+
+      type Experience = { id: number; company: string; position: string; duration: string; description: string };
+      type Education = { id: number; degree: string; institution: string; year: string };
+
+      function ExperienceSection({ experiences }: { experiences: Experience[] }) {
+        if (!experiences || experiences.length === 0) return null;
+        return (
+          <section className="mb-12">
+            <h2 className="pb-2 mb-6 text-3xl font-semibold text-blue-800 border-solid border-b-[3px] border-b-blue-800">Berufserfahrung</h2>
+            <div className="space-y-6">
+              {experiences.map((exp) => (
+                <div key={exp.id} className="rounded-lg border border-solid border-gray-200 p-5 bg-white shadow-[0_4px_14px_rgba(0,0,0,0.06)]">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="m-0 text-xl font-semibold text-blue-800">{exp.position} · {exp.company}</h3>
+                    <span className="text-sm text-gray-600">{exp.duration}</span>
+                  </div>
+                  <p className="mt-2 mb-0 text-gray-700 leading-relaxed">{exp.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      }
+
+      function EducationSection({ education }: { education: Education[] }) {
+        if (!education || education.length === 0) return null;
+        return (
+          <section className="mb-12">
+            <h2 className="pb-2 mb-6 text-3xl font-semibold text-blue-800 border-solid border-b-[3px] border-b-blue-800">Ausbildung</h2>
+            <ul className="list-none p-0 m-0 space-y-4">
+              {education.map((ed) => (
+                <li key={ed.id} className="rounded-lg border border-solid border-gray-200 p-5 bg-white shadow-[0_4px_14px_rgba(0,0,0,0.06)]">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="m-0 text-lg font-semibold text-blue-800">{ed.degree}</h3>
+                    <span className="text-sm text-gray-600">{ed.year}</span>
+                  </div>
+                  <p className="mt-1 mb-0 text-gray-700">{ed.institution}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      }
+
+      function CVResume() {
+        const [personalInfo] = React.useState<PersonalInfo>({
+          fullName: 'Yahia Touma',
+          jobTitle: 'Absolvent der Höheren Handelsschule',
+          email: 'yahyatouma@gmail.com',
+          phone: '0 179 1148239',
+          location: 'Friesenstraße 115, Ihlow/Riepe, 26632',
+          profileImage: 'https://images.pexels.com/photos/33761727/pexels-photo-33761727.jpeg',
+          summary: 'Geboren am 01.06.2001. Motivierter Absolvent mit vielfältigen Bildungserfahrungen und praktischen Kenntnissen in verschiedenen Bereichen.'
+        });
+
+        const [skillDetails] = React.useState<Record<string, SkillDetail>>({
+          'MS Office': {
+            title: 'MS Office Suite',
+            description: 'Umfassende Kenntnisse in:',
+            details: [
+              'Excel - Datenanalyse und Tabellenkalkulation',
+              'PowerPoint - Professionelle Präsentationen',
+              'Word - Dokumentenerstellung und -bearbeitung',
+            ],
+            image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Microsoft_Office_logo_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_logo_%282019%E2%80%93present%29.svg.png',
+          },
+          'SQL Editor': {
+            title: 'SQL Server Management',
+            description: 'Datenbankmanagement-Fähigkeiten:',
+            details: [
+              'Tabellen erstellen und bearbeiten',
+              'Datenabfragen und -manipulation',
+              'Grundlegende Datenbankadministration',
+              'Bei Bedarf kann ich auch komplette Server erstellen',
+            ],
+            image: 'https://cdn-icons-png.flaticon.com/512/4492/4492311.png',
+          },
+          'HTML Editor': {
+            title: 'HTML Development',
+            description: 'Web-Entwicklung:',
+            details: [
+              'HTML5 Markup',
+              'CSS3 Styling',
+              'Responsive Design',
+              'Web-Standards und Best Practices',
+            ],
+            image: 'https://cdn-icons-png.flaticon.com/512/732/732212.png',
+          },
+          'AI Experten': {
+            title: 'KI-Spezialist',
+            description: 'Künstliche Intelligenz Expertise:',
+            details: [
+              'Entwicklung automatisierter Arbeitsabläufe',
+              'KI-Integration zur Prozessoptimierung',
+              'Verbesserung bestehender Systeme durch KI',
+              'Beratung bei KI-Implementierung',
+            ],
+            image: 'https://cdn-icons-png.flaticon.com/512/8637/8637099.png',
+          },
+          'Programmer': {
+            title: 'Programmierung',
+            description: 'Programmiersprachen und -technologien:',
+            details: [
+              'Java - Objektorientierte Programmierung',
+              'Python - Datenanalyse und Automatisierung',
+              'C++ - Systemnahe Programmierung',
+              'HTML/CSS - Web-Entwicklung',
+              'Schwerpunkt auf modifikativer Programmierung',
+            ],
+            image: 'https://cdn-icons-png.flaticon.com/512/1336/1336494.png',
+          },
+          'IT Security': {
+            title: 'IT-Sicherheit',
+            description: 'Cybersecurity und Systemschutz:',
+            details: [
+              'Bedrohungserkennung und -abwehr',
+              'Schutz vor Hackerangriffen',
+              'Sicherung kritischer Dateien',
+              'Systemupdates und Wartung',
+              'Problemdiagnose und -lösung',
+            ],
+            image: 'https://cdn-icons-png.flaticon.com/512/2092/2092063.png',
+          },
+          'Einbau von Sicherheitsanlagen': {
+            title: 'Sicherheits- und Smart Home Systeme',
+            description: 'Installation und Konfiguration:',
+            details: [
+              'Überwachungskameras installieren',
+              'Smart Home Beleuchtungssysteme',
+              'Intelligente Spiegel und Displays',
+              'Bewegungsmelder und Sensoren',
+              'Programmierung der zugehörigen Software',
+            ],
+            image: 'https://cdn-icons-png.flaticon.com/512/1087/1087815.png',
+          },
+        });
+
+        const [experiences] = React.useState<Experience[]>([
+          { id: 1, company: 'Versicherungsbüro', position: 'Berufspraktikum', duration: '05/2023 - 06/2023', description: 'Praktische Erfahrungen im Versicherungswesen und Kundenbetreuung gesammelt' },
+          { id: 2, company: 'Lehrbauhof Großräschen', position: 'Zweiwöchiges Praktikum', duration: '11/2018', description: 'Praktische Erfahrungen im Baubereich gesammelt' },
+          { id: 3, company: 'Niederlausitzer Handwerkerschaft', position: 'Praktikum Handwerk', duration: '12/2018', description: 'Einblicke in verschiedene handwerkliche Tätigkeiten erhalten' },
+        ]);
+
+        const [skills] = React.useState<string[]>([
+          'MS Office',
+          'SQL Editor',
+          'HTML Editor',
+          'AI Experten',
+          'Programmer',
+          'IT Security',
+          'Einbau von Sicherheitsanlagen',
+          'Arabisch (Muttersprache)',
+          'Deutsch (erweiterte Kenntnisse)',
+          'Englisch (erweiterte Kenntnisse)',
+        ]);
+
+        const [education] = React.useState<Education[]>([
+          { id: 1, degree: 'Berufskolleg Duisburg (Höhere Handelsschule)', institution: 'Berufskolleg Duisburg', year: '08/2022 - 06/2024' },
+          { id: 2, degree: 'Fachoberschulreife', institution: 'Senftenberg', year: '08/2018 - 06/2021' },
+          { id: 3, degree: 'OSZ Sedlitz', institution: 'OSZ Sedlitz', year: '09/2017 - 06/2018' },
+          { id: 4, degree: 'Gymnasium', institution: 'Senftenberg', year: '01/2017 - 07/2017' },
+        ]);
+
+        return (
+          <div className="min-h-screen bg-slate-50">
+            <CVHeader personalInfo={personalInfo} />
+            <main className="px-4 py-0 mx-auto my-8 max-w-[800px]">
+              <div className="p-12 rounded-xl bg-[white] shadow-[0_8px_25px_rgba(0,0,0,0.1)]">
+                <AboutSection summary={personalInfo.summary} />
+                <ExperienceSection experiences={experiences} />
+                <EducationSection education={education} />
+                <SkillsSection skills={skills} skillDetails={skillDetails} />
+              </div>
+            </main>
+          </div>
+        );
+      }
+
+      const resumeMount = document.getElementById('resume-root');
+      if (resumeMount) {
+        if (window.ReactDOM && 'createRoot' in window.ReactDOM) {
+          // @ts-ignore
+          window.ReactDOM.createRoot(resumeMount).render(<CVResume />);
+        } else if (window.ReactDOM) {
+          // @ts-ignore
+          window.ReactDOM.render(<CVResume />, resumeMount);
         }
       }
     </script>
