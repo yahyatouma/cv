@@ -13,6 +13,9 @@
       .status { display: inline-block; background: var(--primary); color: #fff; border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 600; letter-spacing: .3px; }
       .hint { margin: 12px 0 0; color: #555; font-size: 14px; }
       @media (max-width: 640px) { .welcome-card { margin: 0 16px; padding: 20px; } .app-title { font-size: 24px; } }
+      /* SkillsSection custom classes */
+      .skill-pill { transform: translateY(0) scale(1); background-color: #1e40af; box-shadow: 0 2px 4px rgba(30, 64, 175, 0.3); transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease; }
+      .skill-pill--hover { transform: translateY(-3px) scale(1.05); background-color: #1d4ed8; box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4); }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
@@ -23,6 +26,7 @@
         <span class="status">Running</span>
         <p class="hint">The server is up. Edit public/index.html to get started.</p>
         <div id="about-root"></div>
+        <div id="skills-root"></div>
       </section>
     </main>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -49,6 +53,79 @@
         } else if (window.ReactDOM) {
           // @ts-ignore
           window.ReactDOM.render(<AboutSection summary={summary} />, mountNode);
+        }
+      }
+
+      type SkillDetail = { title: string; description: string; details: string[]; image: string };
+      type SkillsSectionProps = { skills: string[]; skillDetails: Record<string, SkillDetail> };
+
+      function SkillsSection({ skills, skillDetails }: SkillsSectionProps) {
+        const [hoveredElement, setHoveredElement] = React.useState<string | null>(null);
+        const [hoveredSkill, setHoveredSkill] = React.useState<string | null>(null);
+        if (skills.length === 0) return null;
+        return (
+          <section className="mb-8">
+            <h2 className="pb-2 mb-6 text-3xl font-semibold text-blue-800 border-solid border-b-[3px] border-b-blue-800">Fähigkeiten</h2>
+            <div className="flex flex-wrap gap-3 justify-center">
+              {skills.map((skill, index) => (
+                <div className="inline-block relative" key={skill}>
+                  <span
+                    className={`inline-block px-6 py-3 text-base font-medium rounded-3xl transition-all cursor-pointer duration-[0.3s] ease-[ease] text-[white] ${hoveredElement === `+"`"+`skill-${index}`+"`"+` ? 'skill-pill skill-pill--hover' : 'skill-pill'}`}
+                    onMouseEnter={() => { setHoveredElement(`+"`"+`skill-${index}`+"`"+`); setHoveredSkill(skill); }}
+                    onMouseLeave={() => { setHoveredElement(null); setHoveredSkill(null); }}
+                  >
+                    {skill}
+                  </span>
+                  {hoveredSkill === skill && skillDetails[skill] && (
+                    <div className="absolute top-full left-2/4 p-6 mt-2.5 rounded-xl border-2 border-blue-800 border-solid -translate-x-2/4 bg-[white] max-w-[400px] min-w-[300px] shadow-[0_10px_30px_rgba(0,0,0,0.2)] z-[1000] max-sm:left-0 max-sm:max-w-[300px] max-sm:min-w-[250px]">
+                      <div className="flex gap-4 items-center mb-4">
+                        <img className="object-contain h-[50px] w-[50px]" src={skillDetails[skill].image} alt={skillDetails[skill].title} />
+                        <h3 className="m-0 text-xl font-semibold text-blue-800">{skillDetails[skill].title}</h3>
+                      </div>
+                      <p className="mb-3 text-base font-medium text-gray-700">{skillDetails[skill].description}</p>
+                      <ul className="p-0 m-0">
+                        {skillDetails[skill].details.map((detail, detailIndex) => (
+                          <li className="relative pl-4 mb-2 text-sm text-gray-600" key={detailIndex}>{detail}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      }
+
+      const skillsMount = document.getElementById('skills-root');
+      if (skillsMount) {
+        const skills = ['React', 'TypeScript', 'Tailwind CSS'];
+        const skillDetails: Record<string, SkillDetail> = {
+          'React': {
+            title: 'React',
+            description: 'Komponentenbasierte UI-Bibliothek.',
+            details: ['Hooks', 'Context', 'React Query'],
+            image: 'icons/react.svg'
+          },
+          'TypeScript': {
+            title: 'TypeScript',
+            description: 'Typsichere Erweiterung für JavaScript.',
+            details: ['Generics', 'Types', 'Interfaces'],
+            image: 'icons/ts.svg'
+          },
+          'Tailwind CSS': {
+            title: 'Tailwind CSS',
+            description: 'Dienstprogramm-basierte CSS-Bibliothek.',
+            details: ['Responsive', 'Variants', 'Plugins'],
+            image: 'icons/tailwind.svg'
+          }
+        };
+        if (window.ReactDOM && 'createRoot' in window.ReactDOM) {
+          // @ts-ignore
+          window.ReactDOM.createRoot(skillsMount).render(<SkillsSection skills={skills} skillDetails={skillDetails} />);
+        } else if (window.ReactDOM) {
+          // @ts-ignore
+          window.ReactDOM.render(<SkillsSection skills={skills} skillDetails={skillDetails} />, skillsMount);
         }
       }
     </script>
