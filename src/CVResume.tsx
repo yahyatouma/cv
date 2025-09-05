@@ -14,7 +14,7 @@ interface SkillDetail { title: string; description: string; details: string[]; i
 export function CVResume() {
   const [personalInfo] = React.useState<PersonalInfo>({
     fullName: 'Yahia Touma',
-    jobTitle: 'Absolvent der Höheren Handelsschule',
+    jobTitle: '',
     email: 'yahyatouma@gmail.com',
     phone: '0 179 1148239',
     location: 'Friesenstraße 115, Ihlow/Riepe, 26632',
