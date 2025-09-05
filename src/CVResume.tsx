@@ -18,7 +18,7 @@ export function CVResume() {
     email: 'yahyatouma@gmail.com',
     phone: '0 179 1148239',
     location: 'Friesenstraße 115, Ihlow/Riepe, 26632',
-    profileImage: 'https://images.pexels.com/photos/33761727/pexels-photo-33761727.jpeg',
+    profileImage: '/images/avatar.svg',
     summary: 'Geboren am 01.06.2001. Motivierter Absolvent mit vielfältigen Bildungserfahrungen und praktischen Kenntnissen in verschiedenen Bereichen.',
   });
 
