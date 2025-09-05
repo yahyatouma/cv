@@ -13,7 +13,9 @@ export function CVHeader({ personalInfo }: CVHeaderProps) {
           <img alt="Profilbild" className="object-cover rounded-full border-4 border-solid border-white border-opacity-30 h-[150px] shadow-[0_8px_20px_rgba(0,0,0,0.2)] w-[150px] max-sm:h-[120px] max-sm:w-[120px]" src={personalInfo.profileImage} />
           <div className="text-left max-sm:text-center">
             <h1 className="mx-0 mt-0 mb-2 text-5xl font-[bold] max-sm:text-4xl">{personalInfo.fullName}</h1>
-            <p className="m-0 text-2xl opacity-90 max-sm:text-xl">{personalInfo.jobTitle}</p>
+            {personalInfo.jobTitle && (
+              <p className="m-0 text-2xl opacity-90 max-sm:text-xl">{personalInfo.jobTitle}</p>
+            )}
           </div>
         </div>
         <div className="flex flex-wrap gap-8 justify-center text-lg opacity-80">
