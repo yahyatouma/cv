@@ -6,3 +6,11 @@
 .edu-card--hover { transform: translateX(10px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); background-color: #f1f5f9; }
 .exp-card { transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease; background-color: #f8fafc; }
 .exp-card--hover { transform: translateX(10px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); background-color: #f1f5f9; }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal--visible { opacity: 1; transform: translateY(0); }
+
+/* Simple parallax images */
+.parallax-wrap { position: relative; pointer-events: none; }
+.parallax-img { position: absolute; width: 80px; height: 80px; opacity: .15; filter: drop-shadow(0 6px 18px rgba(0,0,0,.15)); will-change: transform; transition: transform .2s linear; }
