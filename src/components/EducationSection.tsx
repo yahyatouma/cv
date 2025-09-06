@@ -9,10 +9,10 @@ export function EducationSection({ education }: { education: Education[] }) {
   if (!education || education.length === 0) return null;
   return (
     <section className="mb-12">
-      <h2 className="pb-2 mb-6 text-3xl font-semibold text-blue-800 border-solid border-b-[3px] border-b-blue-800">Bildung</h2>
+      <h2 className="pb-2 mb-6 text-3xl font-semibold text-indigo-900 border-solid border-b-[3px] border-b-indigo-600">Bildung</h2>
       {education.map((edu, index) => (
         <motion.article
-          className={`flex justify-between items-center p-6 mb-6 rounded-lg border-l-4 border-solid transition-all cursor-pointer duration-[0.3s] ease-[ease] max-sm:flex-col max-sm:gap-2 max-sm:items-start ${hoveredElement === `edu-${index}` ? 'edu-card edu-card--hover border-l-emerald-600' : 'edu-card border-l-emerald-500'}`}
+          className={`flex justify-between items-center p-6 mb-6 rounded-lg border-l-4 border-solid transition-all cursor-pointer duration-[0.3s] ease-[ease] max-sm:flex-col max-sm:gap-2 max-sm:items-start ${hoveredElement === `edu-${index}` ? 'edu-card edu-card--hover border-l-indigo-700' : 'edu-card border-l-indigo-600'}`}
           key={edu.id}
           onMouseEnter={() => setHoveredElement(`edu-${index}`)}
           onMouseLeave={() => setHoveredElement(null)}
