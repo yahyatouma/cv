@@ -14,3 +14,8 @@
 /* Simple parallax images */
 .parallax-wrap { position: relative; pointer-events: none; }
 .parallax-img { position: absolute; width: 80px; height: 80px; opacity: .15; filter: drop-shadow(0 6px 18px rgba(0,0,0,.15)); will-change: transform; transition: transform .2s linear; }
+
+/* Accent button */
+.accent-btn { display: inline-block; padding: 12px 20px; border-radius: 9999px; font-weight: 600; color: white; background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  box-shadow: 0 10px 30px rgba(14,165,233,0.35); transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; transform: translateY(0) scale(1); border: 1px solid rgba(255,255,255,.15); }
+.accent-btn:hover, .accent-btn:focus { transform: translateY(-2px) scale(1.03); box-shadow: 0 16px 40px rgba(14,165,233,0.45); filter: brightness(1.05); }
