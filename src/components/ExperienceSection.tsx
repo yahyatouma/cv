@@ -9,11 +9,11 @@ export function ExperienceSection({ experiences }: { experiences: Experience[] }
   if (!experiences || experiences.length === 0) return null;
   return (
     <section className="mb-12">
-      <h2 className="pb-2 mb-6 text-3xl font-semibold text-blue-800 border-solid border-b-[3px] border-b-blue-800">Berufserfahrung</h2>
+      <h2 className="pb-2 mb-6 text-3xl font-semibold text-indigo-900 border-solid border-b-[3px] border-b-indigo-600">Berufserfahrung</h2>
       {experiences.map((exp, index) => (
         <motion.article
           key={exp.id}
-          className={`p-6 mb-8 rounded-lg border-l-4 border-solid cursor-pointer bg-slate-50 border-l-blue-800 duration-[0.3s] ease-[ease] ${hoveredElement === `exp-${index}` ? 'exp-card exp-card--hover' : 'exp-card'}`}
+          className={`p-6 mb-8 rounded-lg border-l-4 border-solid cursor-pointer bg-slate-50 border-l-indigo-600 duration-[0.3s] ease-[ease] ${hoveredElement === `exp-${index}` ? 'exp-card exp-card--hover' : 'exp-card'}`}
           onMouseEnter={() => setHoveredElement(`exp-${index}`)}
           onMouseLeave={() => setHoveredElement(null)}
           initial={{ opacity: 0, y: 20 }}
