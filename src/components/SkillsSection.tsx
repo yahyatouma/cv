@@ -17,7 +17,7 @@ export function SkillsSection({ skills, skillDetails }: SkillsSectionProps) {
           {skill}
         </span>
         {inView && details && (
-          <div className="mt-3 p-6 rounded-xl border-2 border-blue-800 border-solid bg-[white] w-full max-w-[640px] shadow-[0_10px_30px_rgba(0,0,0,0.12)] reveal reveal--visible">
+          <div className="mt-3 p-6 rounded-xl border-2 border-indigo-600 border-solid bg-[white] w-full max-w-[640px] shadow-[0_10px_30px_rgba(0,0,0,0.12)] reveal reveal--visible">
             <div className="flex gap-4 items-center mb-4">
               <img className="object-contain h-[50px] w-[50px]" src={details.image} alt={details.title} />
               <h3 className="m-0 text-xl font-semibold text-blue-800">{details.title}</h3>
@@ -36,7 +36,7 @@ export function SkillsSection({ skills, skillDetails }: SkillsSectionProps) {
 
   return (
     <section className="mb-8">
-      <h2 className="pb-2 mb-6 text-3xl font-semibold text-blue-800 border-solid border-b-[3px] border-b-blue-800">Fähigkeiten</h2>
+      <h2 className="pb-2 mb-6 text-3xl font-semibold text-indigo-900 border-solid border-b-[3px] border-b-indigo-600">Fähigkeiten</h2>
       <div className="flex flex-wrap gap-4 justify-center">
         {skills.map((skill, index) => (
           <SkillItem key={skill} skill={skill} index={index} />
