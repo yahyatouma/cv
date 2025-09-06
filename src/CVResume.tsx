@@ -134,6 +134,10 @@ export function CVResume() {
     <div className="min-h-screen bg-slate-50">
       <CVHeader personalInfo={personalInfo} />
       <main className="px-4 py-0 mx-auto my-8 max-w-[800px]">
+        <div className="relative">
+          {/* Decorative parallax icons */}
+          {/**/}
+        </div>
         <div className="p-12 rounded-xl bg-[white] shadow-[0_8px_25px_rgba(0,0,0,0.1)]">
           <AboutSection summary={personalInfo.summary} />
           <ExperienceSection experiences={experiences} />
