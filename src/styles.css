@@ -19,3 +19,18 @@
 .accent-btn { display: inline-block; padding: 12px 20px; border-radius: 9999px; font-weight: 600; color: white; background: linear-gradient(135deg, #38bdf8, #0ea5e9);
   box-shadow: 0 10px 30px rgba(14,165,233,0.35); transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; transform: translateY(0) scale(1); border: 1px solid rgba(255,255,255,.15); }
 .accent-btn:hover, .accent-btn:focus { transform: translateY(-2px) scale(1.03); box-shadow: 0 16px 40px rgba(14,165,233,0.45); filter: brightness(1.05); }
+
+/* Print styles for PDF export */
+@page { size: A4; margin: 18mm; }
+@media print {
+  html, body { background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  #root, .cv-doc { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+  .cv-sheet { background: #fff !important; border: none !important; box-shadow: none !important; }
+  .accent-btn, .parallax-wrap { display: none !important; }
+  * { box-shadow: none !important; text-shadow: none !important; }
+  h1, h2, h3, p, li, span, a { color: #000 !important; }
+  .border-l-4 { border-left-color: #000 !important; }
+  section, article { break-inside: avoid; page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
