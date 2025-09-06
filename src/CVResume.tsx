@@ -134,12 +134,12 @@ export function CVResume() {
   return (
     <div className="min-h-screen bg-slate-50">
       <CVHeader personalInfo={personalInfo} />
-      <main className="px-4 py-0 mx-auto my-8 max-w-[800px]">
+      <main className="px-4 py-0 mx-auto my-8 max-w-[800px] cv-doc">
         <div className="relative">
           {/* Decorative parallax icons */}
           <ParallaxDecor />
         </div>
-        <div className="p-12 rounded-xl bg-white/70 backdrop-blur-sm border border-slate-200 shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
+        <div className="p-12 rounded-xl bg-white/70 backdrop-blur-sm border border-slate-200 shadow-[0_20px_60px_rgba(0,0,0,0.12)] cv-sheet">
           <AboutSection summary={personalInfo.summary} />
           <ExperienceSection experiences={experiences} />
           <EducationSection education={education} />
