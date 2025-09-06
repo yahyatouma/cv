@@ -14,7 +14,7 @@ export function CVHeader({ personalInfo }: CVHeaderProps) {
   const titleOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.6]);
 
   return (
-    <header className="px-0 py-12 text-center bg-blue-800 shadow-[0_4px_6px_rgba(0,0,0,0.1)] text-[white]" ref={ref}>
+    <header className="px-0 py-12 text-center bg-gradient-to-b from-indigo-700 via-indigo-800 to-blue-900 shadow-[0_4px_6px_rgba(0,0,0,0.15)] text-[white]" ref={ref}>
       <div className="px-4 py-0 mx-auto my-0 max-w-[1200px]">
         <div className="flex gap-8 justify-center items-center mb-4 max-sm:flex-col max-sm:gap-4">
           <motion.img alt="Profilbild" className="object-cover rounded-full border-4 border-solid border-white border-opacity-30 h-[150px] shadow-[0_8px_20px_rgba(0,0,0,0.2)] w-[150px] max-sm:h-[120px] max-sm:w-[120px]" src={personalInfo.profileImage} style={{ y: avatarY }} initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }} />
