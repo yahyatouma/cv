@@ -5,6 +5,7 @@ import { AboutSection } from './components/AboutSection';
 import { SkillsSection } from './components/SkillsSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { EducationSection } from './components/EducationSection';
+import { ParallaxDecor } from './components/ParallaxDecor';
 
 interface PersonalInfo { fullName: string; jobTitle: string; email: string; phone: string; location: string; profileImage: string; summary: string }
 interface Experience { id: number; company: string; position: string; duration: string; description: string }
