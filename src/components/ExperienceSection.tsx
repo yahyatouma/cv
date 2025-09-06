@@ -1,17 +1,19 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useScrollDir } from '../hooks/useScrollDir';
 
 interface Experience { id: number; company: string; position: string; duration: string; description: string }
 
 export function ExperienceSection({ experiences }: { experiences: Experience[] }) {
   const [hoveredElement, setHoveredElement] = useState<string | null>(null);
   if (!experiences || experiences.length === 0) return null;
+  const dir = useScrollDir();
   return (
     <section className="mb-12">
       <h2 className="pb-2 mb-6 text-3xl font-semibold text-neutral-100 border-solid border-b-[3px] border-b-neutral-700">Berufserfahrung</h2>
       {experiences.map((exp, index) => (
-        <motion.article
+        <motion.article animate={{ y: dir === 'up' ? -8 : 0 }} transition={{ type: 'spring', stiffness: 120, damping: 18 }}
           key={exp.id}
           className={`p-6 mb-8 rounded-lg border-l-4 border-solid cursor-pointer bg-neutral-900 border-l-neutral-700 duration-[0.3s] ease-[ease] text-neutral-200 ${hoveredElement === `exp-${index}` ? 'exp-card exp-card--hover' : 'exp-card'}`}
           onMouseEnter={() => setHoveredElement(`exp-${index}`)}
