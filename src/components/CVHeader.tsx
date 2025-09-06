@@ -14,18 +14,18 @@ export function CVHeader({ personalInfo }: CVHeaderProps) {
   const titleOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.6]);
 
   return (
-    <header className="px-0 py-12 text-center bg-gradient-to-b from-indigo-700 via-indigo-800 to-blue-900 shadow-[0_4px_6px_rgba(0,0,0,0.15)] text-[white]" ref={ref}>
+    <header className="px-0 py-12 text-center bg-gradient-to-b from-neutral-900 via-neutral-950 to-black shadow-[0_6px_18px_rgba(0,0,0,0.35)] text-[white]" ref={ref}>
       <div className="px-4 py-0 mx-auto my-0 max-w-[1200px]">
         <div className="flex gap-8 justify-center items-center mb-4 max-sm:flex-col max-sm:gap-4">
           <motion.img alt="Profilbild" className="object-cover rounded-full border-4 border-solid border-white border-opacity-30 h-[150px] shadow-[0_8px_20px_rgba(0,0,0,0.2)] w-[150px] max-sm:h-[120px] max-sm:w-[120px]" src={personalInfo.profileImage} style={{ y: avatarY }} initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }} />
           <motion.div className="text-left max-sm:text-center" style={{ y: titleY, opacity: titleOpacity }} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: 'easeOut', delay: .05 }}>
-            <h1 className="mx-0 mt-0 mb-2 text-5xl font-[bold] max-sm:text-4xl">{personalInfo.fullName}</h1>
+            <h1 className="mx-0 mt-0 mb-2 text-5xl font-[bold] max-sm:text-4xl text-neutral-50">{personalInfo.fullName}</h1>
             {personalInfo.jobTitle && (
-              <p className="m-0 text-2xl opacity-90 max-sm:text-xl">{personalInfo.jobTitle}</p>
+              <p className="m-0 text-2xl opacity-90 max-sm:text-xl text-neutral-200">{personalInfo.jobTitle}</p>
             )}
           </motion.div>
         </div>
-        <motion.div className="flex flex-wrap gap-8 justify-center text-lg opacity-80" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .6, ease: 'easeOut' }}>
+        <motion.div className="flex flex-wrap gap-8 justify-center text-lg opacity-90 text-neutral-200" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .6, ease: 'easeOut' }}>
           <span className={`contact-link ${hoveredElement === 'email' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('email')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.email}</span>
           <span className={`contact-link ${hoveredElement === 'phone' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('phone')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.phone}</span>
           <span className={`contact-link ${hoveredElement === 'location' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('location')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.location}</span>
