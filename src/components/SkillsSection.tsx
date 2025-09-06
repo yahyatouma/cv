@@ -20,12 +20,12 @@ export function SkillsSection({ skills, skillDetails }: SkillsSectionProps) {
           <div className="mt-3 p-6 rounded-xl border-2 border-neutral-800 border-solid bg-neutral-900 text-neutral-200 w-full max-w-[640px] shadow-[0_10px_30px_rgba(0,0,0,0.35)] reveal reveal--visible">
             <div className="flex gap-4 items-center mb-4">
               <img className="object-contain h-[50px] w-[50px]" src={details.image} alt={details.title} />
-              <h3 className="m-0 text-xl font-semibold text-blue-800">{details.title}</h3>
+              <h3 className="m-0 text-xl font-semibold text-neutral-100">{details.title}</h3>
             </div>
-            <p className="mb-3 text-base font-medium text-gray-700">{details.description}</p>
+            <p className="mb-3 text-base font-medium text-neutral-300">{details.description}</p>
             <ul className="p-0 m-0">
               {details.details.map((detail, detailIndex) => (
-                <li className="relative pl-4 mb-2 text-sm text-gray-600" key={detailIndex}>{detail}</li>
+                <li className="relative pl-4 mb-2 text-sm text-neutral-400" key={detailIndex}>{detail}</li>
               ))}
             </ul>
           </div>
