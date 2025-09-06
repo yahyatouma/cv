@@ -1,11 +1,14 @@
 "use client";
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
+import { useScrollDir } from '../hooks/useScrollDir';
 
 interface SkillDetail { title: string; description: string; details: string[]; image: string }
 interface SkillsSectionProps { skills: string[]; skillDetails: Record<string, SkillDetail> }
 
 export function SkillsSection({ skills, skillDetails }: SkillsSectionProps) {
+  const dir = useScrollDir();
   if (skills.length === 0) return null;
 
   function SkillItem({ skill, index }: { skill: string; index: number }) {
