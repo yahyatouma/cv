@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface Experience { id: number; company: string; position: string; duration: string; description: string }
 
@@ -10,11 +11,15 @@ export function ExperienceSection({ experiences }: { experiences: Experience[] }
     <section className="mb-12">
       <h2 className="pb-2 mb-6 text-3xl font-semibold text-blue-800 border-solid border-b-[3px] border-b-blue-800">Berufserfahrung</h2>
       {experiences.map((exp, index) => (
-        <article
+        <motion.article
           key={exp.id}
           className={`p-6 mb-8 rounded-lg border-l-4 border-solid cursor-pointer bg-slate-50 border-l-blue-800 duration-[0.3s] ease-[ease] ${hoveredElement === `exp-${index}` ? 'exp-card exp-card--hover' : 'exp-card'}`}
           onMouseEnter={() => setHoveredElement(`exp-${index}`)}
           onMouseLeave={() => setHoveredElement(null)}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+          transition={{ duration: .5, ease: 'easeOut', delay: index * 0.06 }}
         >
           <div className="flex justify-between items-start mb-3 max-sm:flex-col max-sm:gap-2">
             <div>
@@ -26,7 +31,7 @@ export function ExperienceSection({ experiences }: { experiences: Experience[] }
           {exp.description && (
             <p className="m-0 text-base leading-relaxed text-gray-600">{exp.description}</p>
           )}
-        </article>
+        </motion.article>
       ))}
     </section>
   );
