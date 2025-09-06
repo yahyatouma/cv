@@ -37,11 +37,11 @@ export function SkillsSection({ skills, skillDetails }: SkillsSectionProps) {
   return (
     <section className="mb-8">
       <h2 className="pb-2 mb-6 text-3xl font-semibold text-neutral-100 border-solid border-b-[3px] border-b-neutral-700">Fähigkeiten</h2>
-      <div className="flex flex-wrap gap-4 justify-center">
+      <motion.div className="flex flex-wrap gap-4 justify-center" animate={{ y: dir === 'up' ? -8 : 0 }} transition={{ type: 'spring', stiffness: 120, damping: 18 }}>
         {skills.map((skill, index) => (
           <SkillItem key={skill} skill={skill} index={index} />
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
