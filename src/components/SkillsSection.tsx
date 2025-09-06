@@ -12,8 +12,8 @@ export function SkillsSection({ skills, skillDetails }: SkillsSectionProps) {
     const { ref, inView } = useInView<HTMLDivElement>();
     const details = skillDetails[skill];
     return (
-      <div ref={ref} className="inline-block relative reveal">
-        <span className={`inline-block px-6 py-3 text-base font-medium rounded-3xl text-[white] ${inView ? 'skill-pill skill-pill--hover reveal--visible' : 'skill-pill'}`}>
+      <div ref={ref} className={`inline-block relative reveal ${inView ? 'reveal--visible' : ''}`}>
+        <span className={`inline-block px-6 py-3 text-base font-medium rounded-3xl text-[white] ${inView ? 'skill-pill skill-pill--hover' : 'skill-pill'}`}>
           {skill}
         </span>
         {inView && details && (
