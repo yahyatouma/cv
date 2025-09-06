@@ -30,14 +30,6 @@ export function CVHeader({ personalInfo }: CVHeaderProps) {
           <span className={`contact-link ${hoveredElement === 'phone' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('phone')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.phone}</span>
           <span className={`contact-link ${hoveredElement === 'location' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('location')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.location}</span>
         </motion.div>
-        <motion.div className="mt-6" initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .5, ease: 'easeOut', delay: .05 }}>
-          <button className="accent-btn" onClick={() => window.print()}
-            onMouseEnter={() => setHoveredElement('download')}
-            onMouseLeave={() => setHoveredElement(null)}
-          >
-            Lebenslauf herunterladen
-          </button>
-        </motion.div>
       </div>
     </header>
   );
