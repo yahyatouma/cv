@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useActiveSection } from '../hooks/useActiveSection';
 
 interface PersonalInfo { fullName: string; jobTitle: string; email: string; phone: string; location: string; profileImage: string }
 interface CVHeaderProps { personalInfo: PersonalInfo }
@@ -13,8 +14,10 @@ export function CVHeader({ personalInfo }: CVHeaderProps) {
   const titleY = useTransform(scrollYProgress, [0, 1], [0, -20]);
   const titleOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.6]);
 
+  const active = useActiveSection(['about','experience','education','skills','stats']);
+
   return (
-    <header className="px-0 py-12 text-center bg-gradient-to-b from-white via-slate-50 to-slate-100 shadow-[0_6px_18px_rgba(0,0,0,0.15)] text-slate-900" ref={ref}>
+    <header className="sticky-header" ref={ref}>
       <div className="px-4 py-0 mx-auto my-0 max-w-[1200px]">
         <div className="flex gap-8 justify-center items-center mb-4 max-sm:flex-col max-sm:gap-4">
           <motion.img alt="Profilbild" className="object-cover rounded-full border-4 border-solid border-slate-200 h-[150px] shadow-[0_8px_20px_rgba(0,0,0,0.08)] w-[150px] max-sm:h-[120px] max-sm:w-[120px]" src={personalInfo.profileImage} style={{ y: avatarY }} initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }} />
@@ -25,6 +28,13 @@ export function CVHeader({ personalInfo }: CVHeaderProps) {
             )}
           </motion.div>
         </div>
+        <motion.nav className="header-nav" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .6, ease: 'easeOut' }}>
+          <a href="#about" className={`nav-link ${active === 'about' ? 'nav-link--active' : ''}`}>Über mich</a>
+          <a href="#experience" className={`nav-link ${active === 'experience' ? 'nav-link--active' : ''}`}>Erfahrung</a>
+          <a href="#education" className={`nav-link ${active === 'education' ? 'nav-link--active' : ''}`}>Bildung</a>
+          <a href="#skills" className={`nav-link ${active === 'skills' ? 'nav-link--active' : ''}`}>Skills</a>
+          <a href="#stats" className={`nav-link ${active === 'stats' ? 'nav-link--active' : ''}`}>Zahlen</a>
+        </motion.nav>
         <motion.div className="flex flex-wrap gap-8 justify-center text-lg opacity-90 text-slate-600" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .6, ease: 'easeOut' }}>
           <span className={`contact-link ${hoveredElement === 'email' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('email')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.email}</span>
           <span className={`contact-link ${hoveredElement === 'phone' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('phone')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.phone}</span>
