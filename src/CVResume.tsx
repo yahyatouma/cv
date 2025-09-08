@@ -6,6 +6,9 @@ import { SkillsSection } from './components/SkillsSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { EducationSection } from './components/EducationSection';
 import { ParallaxDecor } from './components/ParallaxDecor';
+import { StatsSection } from './components/StatsSection';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { CookieConsent } from './components/CookieConsent';
 
 interface PersonalInfo { fullName: string; jobTitle: string; email: string; phone: string; location: string; profileImage: string; summary: string }
 interface Experience { id: number; company: string; position: string; duration: string; description: string }
@@ -136,16 +139,18 @@ export function CVResume() {
       <CVHeader personalInfo={personalInfo} />
       <main className="px-4 py-0 mx-auto my-8 max-w-[800px] cv-doc">
         <div className="relative">
-          {/* Decorative parallax icons */}
           <ParallaxDecor />
         </div>
         <div className="p-12 rounded-xl bg-white/70 backdrop-blur-sm border border-slate-200 shadow-[0_20px_60px_rgba(0,0,0,0.12)] cv-sheet">
-          <AboutSection summary={personalInfo.summary} />
-          <ExperienceSection experiences={experiences} />
-          <EducationSection education={education} />
-          <SkillsSection skills={skills} skillDetails={skillDetails} />
+          <section id="about"><AboutSection summary={personalInfo.summary} /></section>
+          <section id="experience"><ExperienceSection experiences={experiences} /></section>
+          <section id="education"><EducationSection education={education} /></section>
+          <section id="skills"><SkillsSection skills={skills} skillDetails={skillDetails} /></section>
+          <StatsSection />
         </div>
       </main>
+      <FloatingWhatsApp phone={personalInfo.phone} />
+      <CookieConsent />
     </div>
   );
 }
