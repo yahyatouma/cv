@@ -14,7 +14,7 @@ export function CVHeader({ personalInfo }: CVHeaderProps) {
   const titleY = useTransform(scrollYProgress, [0, 1], [0, -20]);
   const titleOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.6]);
 
-  const active = useActiveSection(['about','experience','education','skills','stats']);
+  const active = useActiveSection(['about','experience','education','skills']);
 
   return (
     <header className="sticky-header" ref={ref}>
@@ -33,7 +33,6 @@ export function CVHeader({ personalInfo }: CVHeaderProps) {
           <a href="#experience" className={`nav-link ${active === 'experience' ? 'nav-link--active' : ''}`}>Erfahrung</a>
           <a href="#education" className={`nav-link ${active === 'education' ? 'nav-link--active' : ''}`}>Bildung</a>
           <a href="#skills" className={`nav-link ${active === 'skills' ? 'nav-link--active' : ''}`}>Skills</a>
-          <a href="#stats" className={`nav-link ${active === 'stats' ? 'nav-link--active' : ''}`}>Zahlen</a>
         </motion.nav>
         <motion.div className="flex flex-wrap gap-8 justify-center text-lg opacity-90 text-slate-600" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .6, ease: 'easeOut' }}>
           <span className={`contact-link ${hoveredElement === 'email' ? 'contact-link--hover' : ''}`} onMouseEnter={() => setHoveredElement('email')} onMouseLeave={() => setHoveredElement(null)}>{personalInfo.email}</span>
