@@ -1,14 +1,12 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useScrollDir } from '../hooks/useScrollDir';
 
 interface Education { id: number; degree: string; institution: string; year: string }
 
 export function EducationSection({ education }: { education: Education[] }) {
   const [hoveredElement, setHoveredElement] = useState<string | null>(null);
   if (!education || education.length === 0) return null;
-  const dir = useScrollDir();
   return (
     <section className="mb-12">
       <h2 className="pb-2 mb-6 text-3xl font-semibold text-slate-900 border-solid border-b-[3px] border-b-slate-300">Bildung</h2>
@@ -23,7 +21,7 @@ export function EducationSection({ education }: { education: Education[] }) {
           viewport={{ once: true, margin: '0px 0px -10% 0px' }}
           transition={{ duration: .5, ease: 'easeOut', delay: index * 0.06 }}
         >
-          <motion.div animate={{ y: dir === 'up' ? -8 : 0 }} transition={{ type: 'spring', stiffness: 120, damping: 18 }} className="w-full flex justify-between items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start">
+          <motion.div className="w-full flex justify-between items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start">
             <div>
               <h3 className="mx-0 mt-0 mb-1 text-xl font-semibold text-slate-900">{edu.degree}</h3>
               <p className="m-0 text-base font-medium text-slate-600">{edu.institution}</p>
