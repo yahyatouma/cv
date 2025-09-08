@@ -7,36 +7,17 @@ interface SkillDetail { title: string; description: string; details: string[]; i
 interface SkillsSectionProps { skills: string[]; skillDetails: Record<string, SkillDetail> }
 
 export function SkillsSection({ skills, skillDetails }: SkillsSectionProps) {
-  const [openIndex, setOpenIndex] = React.useState<number | null>(null);
   if (skills.length === 0) return null;
 
   function SkillItem({ skill, index }: { skill: string; index: number }) {
     const { ref, inView } = useInView<HTMLDivElement>();
-    const [hover, setHover] = React.useState(false);
     const details = skillDetails[skill];
-    const isOpen = hover || openIndex === index;
-
-    const toggle = () => setOpenIndex((prev) => (prev === index ? null : index));
-    const onKey = (e: React.KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggle();
-      }
-    };
-
     return (
-      <div ref={ref} className={`inline-block align-top reveal ${inView ? 'reveal--visible' : ''}`} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-        <span
-          role="button"
-          tabIndex={0}
-          aria-expanded={isOpen}
-          onClick={toggle}
-          onKeyDown={onKey}
-          className={`inline-block px-6 py-3 text-base font-medium rounded-3xl text-[white] ${inView ? 'skill-pill skill-pill--hover' : 'skill-pill'}`}
-        >
+      <div ref={ref} className={`inline-block align-top reveal ${inView ? 'reveal--visible' : ''}`}>
+        <span className={`inline-block px-6 py-3 text-base font-medium rounded-3xl text-[white] ${inView ? 'skill-pill skill-pill--hover' : 'skill-pill'}`}>
           {skill}
         </span>
-        {isOpen && details && (
+        {inView && details && (
           <div className="mt-3 p-6 rounded-xl border-2 border-slate-200 border-solid bg-white text-slate-700 w-full max-w-[640px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] reveal reveal--visible">
             <div className="flex gap-4 items-center mb-4">
               <img className="object-contain h-[50px] w-[50px]" src={details.image} alt={details.title} />
