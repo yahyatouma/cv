@@ -18,9 +18,9 @@ export function CookieConsent() {
 
   return (
     <div className="cookie-bar" role="dialog" aria-live="polite">
-      <div className="cookie-text">نستخدم ملفات تعريف الارتباط لتحسين تجربتك. بالمتابعة، فإنك توافق.</div>
+      <div className="cookie-text">Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Durch die weitere Nutzung stimmen Sie der Verwendung von Cookies zu.</div>
       <div className="cookie-actions">
-        <a className="cookie-link" href="#" onClick={(e)=>e.preventDefault()}>DATENSCHUTZ</a>
+        <a className="cookie-link" href="#" onClick={(e)=>e.preventDefault()}>Datenschutzerklärung</a>
         <button className="accent-btn cookie-accept" onClick={accept}>Akzeptieren</button>
       </div>
     </div>
