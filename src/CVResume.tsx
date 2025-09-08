@@ -6,7 +6,6 @@ import { SkillsSection } from './components/SkillsSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { EducationSection } from './components/EducationSection';
 import { ParallaxDecor } from './components/ParallaxDecor';
-import { StatsSection } from './components/StatsSection';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { CookieConsent } from './components/CookieConsent';
 
@@ -146,7 +145,6 @@ export function CVResume() {
           <section id="experience"><ExperienceSection experiences={experiences} /></section>
           <section id="education"><EducationSection education={education} /></section>
           <section id="skills"><SkillsSection skills={skills} skillDetails={skillDetails} /></section>
-          <StatsSection />
         </div>
       </main>
       <FloatingWhatsApp phone={personalInfo.phone} />
